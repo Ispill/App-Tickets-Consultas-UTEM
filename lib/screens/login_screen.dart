@@ -10,8 +10,10 @@ class LoginScreen extends StatelessWidget {
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) return;
+
       final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+          await googleUser.authentication;
 
       if (googleAuth?.accessToken != null && googleAuth?.idToken != null) {
         final credential = GoogleAuthProvider.credential(
@@ -29,6 +31,7 @@ class LoginScreen extends StatelessWidget {
           );
         } else {
           await _auth.signOut();
+          await _googleSignIn.disconnect();
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Por favor, usa un correo @utem.cl')),
           );
@@ -44,11 +47,46 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Inicio de Sesión')),
+      appBar: AppBar(
+        title: const Text(
+          'Inicio de Sesión',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        backgroundColor: const Color.fromARGB(255, 14, 112, 107),
+      ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => signInWithGoogle(context),
-          child: const Text('Iniciar sesión con Google'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Logo grande
+            Image.asset(
+              'assets/utem-logo.png',
+              height: 300, // Ajusta el tamaño según tus necesidades
+              width: 300,
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () => signInWithGoogle(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 12, 110, 105),
+                foregroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    'assets/google-logo.png', // Icono de Google
+                    height: 24, // Ajusta el tamaño según tus necesidades
+                    width: 24,
+                  ),
+                  const SizedBox(width: 10),
+                  const Text('Iniciar sesión con Google'),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

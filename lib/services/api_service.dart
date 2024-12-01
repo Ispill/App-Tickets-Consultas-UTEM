@@ -80,4 +80,15 @@ class ApiService {
       throw Exception('Error al obtener el archivo adjunto');
     }
   }
+
+  Future<void> deleteTicket(String ticketToken) async {
+    final response = await http.delete(
+      Uri.parse('$baseUrl/v1/icso/$ticketToken/ticket'),
+      headers: {'Authorization': 'Bearer $apiToken'},
+    );
+
+    if (response.statusCode != 204) {
+      throw Exception('Error al eliminar el ticket');
+    }
+  }
 }
