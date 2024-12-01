@@ -9,6 +9,8 @@ class HomeScreen extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
+  HomeScreen({super.key});
+
   Future<void> _signOut(BuildContext context) async {
     try {
       await _auth.signOut(); // Cerrar sesión de Firebase
@@ -76,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FilterTicketsScreen(),
+                    builder: (context) => const FilterTicketsScreen(),
                   ),
                 );
               },

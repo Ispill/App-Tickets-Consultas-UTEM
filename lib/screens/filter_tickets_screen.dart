@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'tickets_screen.dart';
 
 class FilterTicketsScreen extends StatefulWidget {
-  FilterTicketsScreen({super.key});
+  const FilterTicketsScreen({super.key});
 
   @override
   _FilterTicketsScreenState createState() => _FilterTicketsScreenState();
@@ -22,7 +22,6 @@ class _FilterTicketsScreenState extends State<FilterTicketsScreen> {
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: const Color.fromARGB(255, 14, 112, 107),
-        centerTitle: true,
         elevation: 4,
       ),
       body: SingleChildScrollView(

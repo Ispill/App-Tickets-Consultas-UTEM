@@ -7,7 +7,7 @@ import '../services/api_service.dart';
 class TicketDetailScreen extends StatefulWidget {
   final String ticketToken;
 
-  TicketDetailScreen({required this.ticketToken});
+  const TicketDetailScreen({super.key, required this.ticketToken});
 
   @override
   _TicketDetailScreenState createState() => _TicketDetailScreenState();
