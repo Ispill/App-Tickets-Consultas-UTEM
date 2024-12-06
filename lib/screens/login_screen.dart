@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../services/api_service.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -27,6 +28,9 @@ class LoginScreen extends StatelessWidget {
             await _auth.signInWithCredential(credential);
 
         if (userCredential.user?.email?.endsWith('@utem.cl') ?? false) {
+          // Asigna el idToken a la ApiService
+          ApiService.setApiToken(googleAuth.idToken!);
+
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => HomeScreen()),

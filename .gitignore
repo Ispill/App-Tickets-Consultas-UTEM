@@ -41,9 +41,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-# Variable de entorno con el token JWT de la API
-var.env
-
-# Servicio personal de Google
-/android/app/google-services.json

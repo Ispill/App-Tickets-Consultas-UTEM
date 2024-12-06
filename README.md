@@ -138,4 +138,4 @@ flutter run --debug
 
 ## Notas Adicionales
 - Probar todas las funcionalidades en dispositivos reales para garantizar compatibilidad y correcto funcionamiento es lo ideal.
-- Obtenga el token JWT de la página https://api.sebastian.cl/ ingresando con una cuenta de Google con dominio "@utem.cl" y agreguelo como variable de entorno en el archivo *var.env*.
+- Ingresar con una cuenta que tenga como dominio "*utem.cl*".

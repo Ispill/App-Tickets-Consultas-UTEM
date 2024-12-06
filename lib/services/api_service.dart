@@ -1,10 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiService {
   static const String baseUrl = 'https://api.sebastian.cl/oirs-utem';
-  static String? apiToken = dotenv.env["API_TOKEN"];
+  static String? apiToken;
+
+  static void setApiToken(String token) {
+    apiToken = token;
+  }
 
   Future<List<dynamic>> fetchCategories() async {
     final response = await http.get(
