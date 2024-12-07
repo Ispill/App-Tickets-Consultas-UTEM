@@ -28,7 +28,6 @@ class LoginScreen extends StatelessWidget {
             await _auth.signInWithCredential(credential);
 
         if (userCredential.user?.email?.endsWith('@utem.cl') ?? false) {
-          // Asigna el idToken a la ApiService
           ApiService.setApiToken(googleAuth.idToken!);
 
           Navigator.pushReplacement(
